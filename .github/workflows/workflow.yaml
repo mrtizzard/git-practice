@@ -13,6 +13,13 @@ jobs:
       - name: 'Checkout'
         uses: actions/checkout@v4
 
+      - name: Lint
+        uses: gruntwork-io/terragrunt-action@v2
+        with:
+          tf_version: ${{ env.tf_version }}
+          tg_version: ${{ env.tg_version }}
+          tg_command: 'hclfmt --terragrunt-diff'
+
       - name: Check terragrunt HCL
         uses: gruntwork-io/terragrunt-action@v2
         with:
